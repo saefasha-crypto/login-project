@@ -4,7 +4,6 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Login</title>
@@ -15,7 +14,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,sans-serif;
+    font-family:Arial;
 }
 
 body{
@@ -30,19 +29,14 @@ body{
 
     padding:15px;
 
-    background:
-    linear-gradient(135deg,#000,#111,#1a1a1a);
-
-    overflow-x:hidden;
+    background:#0d0d0d;
 }
-
-/* الكونتينر */
 
 .container{
 
     width:100%;
 
-    max-width:1000px;
+    max-width:950px;
 
     display:flex;
 
@@ -54,8 +48,7 @@ body{
 
     background:#111;
 
-    box-shadow:
-    0 0 30px rgba(255,255,255,.08);
+    box-shadow:0 0 25px rgba(255,255,255,.08);
 }
 
 /* الصورة */
@@ -63,8 +56,6 @@ body{
 .left{
 
     flex:1 1 400px;
-
-    min-height:300px;
 }
 
 .left img{
@@ -74,11 +65,9 @@ body{
     height:100%;
 
     object-fit:cover;
-
-    display:block;
 }
 
-/* ناحية اللوجين */
+/* اللوجين */
 
 .right{
 
@@ -93,8 +82,6 @@ body{
     padding:40px;
 }
 
-/* بوكس اللوجين */
-
 .login-box{
 
     width:100%;
@@ -102,20 +89,16 @@ body{
     max-width:350px;
 }
 
-/* العنوان */
-
 .login-box h2{
 
     text-align:center;
 
-    font-size:42px;
+    color:white;
+
+    font-size:40px;
 
     margin-bottom:30px;
-
-    color:white;
 }
-
-/* الانبوت */
 
 input{
 
@@ -134,16 +117,7 @@ input{
     color:white;
 
     font-size:16px;
-
-    outline:none;
 }
-
-input::placeholder{
-
-    color:#aaa;
-}
-
-/* الزر */
 
 button{
 
@@ -164,8 +138,6 @@ button{
     cursor:pointer;
 
     margin-top:10px;
-
-    transition:.3s;
 }
 
 button:hover{
@@ -173,79 +145,28 @@ button:hover{
     opacity:.8;
 }
 
-/* اهتزاز */
-
-.shake{
-
-    animation:shake .4s;
-}
-
-@keyframes shake{
-
-    0%{transform:translateX(0);}
-    25%{transform:translateX(-8px);}
-    50%{transform:translateX(8px);}
-    75%{transform:translateX(-8px);}
-    100%{transform:translateX(0);}
-}
-
-/* 📱 الموبايل */
+/* موبايل */
 
 @media(max-width:768px){
-
-    body{
-
-        padding:10px;
-    }
 
     .container{
 
         flex-direction:column;
-
-        border-radius:20px;
-    }
-
-    .left{
-
-        width:100%;
-
-        min-height:220px;
     }
 
     .left img{
 
-        height:220px;
+        height:250px;
     }
 
     .right{
 
-        width:100%;
-
-        padding:25px 20px;
-    }
-
-    .login-box{
-
-        max-width:100%;
+        padding:25px;
     }
 
     .login-box h2{
 
         font-size:32px;
-    }
-
-    input{
-
-        padding:14px;
-
-        font-size:15px;
-    }
-
-    button{
-
-        padding:14px;
-
-        font-size:16px;
     }
 
 }
@@ -258,15 +179,11 @@ button:hover{
 
 <div class="container">
 
-    <!-- الصورة -->
-
     <div class="left">
 
         <img src="me.jpg">
 
     </div>
-
-    <!-- اللوجين -->
 
     <div class="right">
 
@@ -294,8 +211,6 @@ button:hover{
 
 <script>
 
-let attempts = 0;
-
 function check(){
 
     let user =
@@ -304,62 +219,23 @@ function check(){
     let pass =
     document.getElementById("password").value;
 
-    let box =
-    document.querySelector(".login-box");
-
-    let btn =
-    document.querySelector("button");
-
-    /* الباسورد الجديد */
-
     if(user === "saif2004" && pass === "2005910"){
 
         localStorage.setItem("login","true");
 
-        window.location.href="home.html";
+        window.location.href = "home.html";
 
     }else{
 
-        attempts++;
-
-        box.classList.add("shake");
-
-        setTimeout(() => {
-
-            box.classList.remove("shake");
-
-        },500);
-
         alert("Wrong Password ❌");
-
-        if(attempts >= 3){
-
-            btn.disabled = true;
-
-            btn.innerHTML = "LOCKED 🔒";
-
-            btn.style.background = "gray";
-
-            setTimeout(() => {
-
-                attempts = 0;
-
-                btn.disabled = false;
-
-                btn.innerHTML = "LOGIN";
-
-                btn.style.background = "white";
-
-            },30000);
-        }
     }
 }
 
 /* Enter */
 
-document.addEventListener("keydown", function(event){
+document.addEventListener("keydown", function(e){
 
-    if(event.key === "Enter"){
+    if(e.key === "Enter"){
 
         check();
     }
