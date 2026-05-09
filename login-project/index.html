@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Welcome</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    background:
+    radial-gradient(circle at top,#444 0%,transparent 25%),
+    radial-gradient(circle at bottom right,#222 0%,transparent 30%),
+    linear-gradient(135deg,#000,#111,#1a1a1a);
+
+}
+
+/* تأثير الإضاءة */
+
+body::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    background:white;
+
+    filter:blur(200px);
+
+    opacity:.05;
+
+    top:-120px;
+    left:-120px;
+}
+
+/* البوكس */
+
+.container{
+
+    position:relative;
+
+    width:450px;
+
+    padding:60px 40px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,0.05);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,0.1);
+
+    text-align:center;
+
+    box-shadow:
+    0 0 30px rgba(0,0,0,.7);
+
+}
+
+/* أيقونة اللاب */
+
+.logo{
+
+    font-size:80px;
+
+    margin-bottom:25px;
+
+    animation:float 2s infinite ease-in-out;
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
+/* العنوان */
+
+h1{
+
+    color:white;
+
+    font-size:55px;
+
+    letter-spacing:4px;
+
+    margin-bottom:35px;
+
+    text-shadow:0 0 15px rgba(255,255,255,.2);
+}
+
+/* الزر */
+
+button{
+
+    width:100%;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:18px;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    color:black;
+
+    cursor:pointer;
+
+    background:white;
+
+    transition:.3s;
+
+    box-shadow:
+    0 0 20px rgba(255,255,255,.15);
+}
+
+button:hover{
+
+    transform:scale(1.05);
+
+    background:#d9d9d9;
+
+    box-shadow:
+    0 0 35px rgba(255,255,255,.3);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">💻</div>
+
+    <h1>WELCOME</h1>
+
+    <button onclick="goLogin()">
+        ENTER
+    </button>
+
+</div>
+
+<script>
+
+function goLogin(){
+
+    window.location.href = "login.html";
+
+}
+
+</script>
+
+</body>
+</html>

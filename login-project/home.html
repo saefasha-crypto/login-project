@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Saif Profile</title>
+
+<script>
+
+if(localStorage.getItem("login") !== "true"){
+
+    window.location.href = "login.html";
+}
+
+</script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+
+    background:#050505;
+
+    color:white;
+
+    overflow-x:hidden;
+}
+
+/* أول سكشن */
+
+.hero{
+
+    width:100%;
+
+    height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 90px;
+
+    background:
+    radial-gradient(circle at top right,
+    rgba(255,255,255,.08),
+    transparent 25%),
+
+    linear-gradient(135deg,
+    #000,
+    #111,
+    #1a1a1a);
+}
+
+/* الصورة */
+
+.left{
+
+    width:50%;
+
+    display:flex;
+
+    justify-content:center;
+}
+
+.left img{
+
+    width:500px;
+
+    height:500px;
+
+    object-fit:cover;
+
+    border-radius:35px;
+
+    border:3px solid rgba(255,255,255,.15);
+
+    box-shadow:
+    0 0 40px rgba(255,255,255,.08),
+    0 0 80px rgba(0,0,0,.9);
+
+    transition:.4s;
+}
+
+.left img:hover{
+
+    transform:scale(1.03);
+}
+
+/* الكلام */
+
+.right{
+
+    width:50%;
+}
+
+/* الاسم */
+
+.right h1{
+
+    font-size:85px;
+
+    line-height:1.1;
+
+    font-weight:bold;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    margin-bottom:25px;
+
+    color:white;
+
+    text-shadow:
+    0 0 20px rgba(255,255,255,.08);
+}
+
+/* كلمة المهندس */
+
+.right span{
+
+    color:#9ca3af;
+}
+
+/* السهم */
+
+.arrow{
+
+    margin-top:30px;
+
+    font-size:60px;
+
+    color:white;
+
+    animation:down 1.5s infinite;
+}
+
+/* حركة */
+
+@keyframes down{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(15px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
+/* الشهادات */
+
+.certificates{
+
+    padding:100px 80px;
+
+    background:#0b0b0b;
+}
+
+.certificates h2{
+
+    text-align:center;
+
+    font-size:50px;
+
+    margin-bottom:50px;
+
+    letter-spacing:3px;
+}
+
+/* الكروت */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(260px,1fr));
+
+    gap:25px;
+}
+
+.cards img{
+
+    width:100%;
+
+    height:230px;
+
+    object-fit:cover;
+
+    border-radius:25px;
+
+    cursor:pointer;
+
+    transition:.4s;
+
+    border:2px solid rgba(255,255,255,.08);
+
+    box-shadow:
+    0 0 25px rgba(0,0,0,.7);
+}
+
+.cards img:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+    0 0 30px rgba(255,255,255,.15);
+}
+
+/* popup */
+
+#popup{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.95);
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999;
+}
+
+#popup img{
+
+    width:80%;
+
+    max-width:950px;
+
+    border-radius:25px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- أول الصفحة -->
+
+<div class="hero">
+
+    <!-- الصورة -->
+
+    <div class="left">
+
+        <img src="me.jpg">
+
+    </div>
+
+    <!-- الاسم -->
+
+    <div class="right">
+
+        <h1>
+
+            <span>ENGINEER</span><br>
+
+            SAIF <br>
+
+            MOHAMED
+
+        </h1>
+
+        <div class="arrow">
+            ↓
+        </div>
+
+    </div>
+
+</div>
+
+<!-- الشهادات -->
+
+<div class="certificates">
+
+    <h2>MY CERTIFICATES</h2>
+
+    <div class="cards">
+
+        <img src="c2.jpg" onclick="openImg(this)">
+        <img src="c3.jpg" onclick="openImg(this)">
+        <img src="c4.jpg" onclick="openImg(this)">
+        <img src="c5.jpg" onclick="openImg(this)">
+        <img src="c6.jpg" onclick="openImg(this)">
+        <img src="c7.jpg" onclick="openImg(this)">
+        <img src="c8.jpg" onclick="openImg(this)">
+        <img src="c9.jpg" onclick="openImg(this)">
+        <img src="c10.jpg" onclick="openImg(this)">
+
+    </div>
+
+</div>
+
+<!-- popup -->
+
+<div id="popup" onclick="closeImg()">
+
+    <img id="popup-img">
+
+</div>
+
+<script>
+
+function openImg(img){
+
+    document.getElementById("popup").style.display="flex";
+
+    document.getElementById("popup-img").src=img.src;
+}
+
+function closeImg(){
+
+    document.getElementById("popup").style.display="none";
+}
+
+</script>
+
+</body>
+</html>

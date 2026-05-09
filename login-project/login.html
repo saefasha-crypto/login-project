@@ -1,0 +1,325 @@
+```html id="f8n2v5"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(135deg,#0f172a,#1e293b,#0f172a);
+
+    overflow:hidden;
+}
+
+/* الكونتينر */
+
+.container{
+
+    width:900px;
+
+    height:500px;
+
+    display:flex;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    background:rgba(255,255,255,0.05);
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:
+    0 0 40px rgba(0,0,0,.6);
+}
+
+/* الصورة */
+
+.left{
+
+    width:50%;
+
+    position:relative;
+}
+
+.left img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+}
+
+/* طبقة غامقة */
+
+.overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(to top,
+    rgba(0,0,0,.7),
+    rgba(0,0,0,.2));
+}
+
+/* ناحية اللوجين */
+
+.right{
+
+    width:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+    background:rgba(255,255,255,0.03);
+}
+
+/* البوكس */
+
+.login-box{
+
+    width:100%;
+}
+
+/* اهتزاز */
+
+.shake{
+
+    animation:shake .4s;
+}
+
+@keyframes shake{
+
+    0%{transform:translateX(0);}
+    25%{transform:translateX(-10px);}
+    50%{transform:translateX(10px);}
+    75%{transform:translateX(-10px);}
+    100%{transform:translateX(0);}
+}
+
+/* العنوان */
+
+h2{
+
+    color:#00ffcc;
+
+    font-size:40px;
+
+    margin-bottom:35px;
+
+    text-align:center;
+}
+
+/* الانبوت */
+
+input{
+
+    width:100%;
+
+    padding:16px;
+
+    margin:12px 0;
+
+    border:none;
+
+    border-radius:14px;
+
+    outline:none;
+
+    font-size:16px;
+
+    background:rgba(255,255,255,.1);
+
+    color:white;
+}
+
+input::placeholder{
+
+    color:#ccc;
+}
+
+/* الزر */
+
+button{
+
+    width:100%;
+
+    padding:16px;
+
+    margin-top:15px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#00ffcc;
+
+    color:black;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+button:hover{
+
+    background:#00ccaa;
+
+    transform:scale(1.03);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- الصورة -->
+
+    <div class="left">
+
+        <img src="me.jpg">
+
+        <div class="overlay"></div>
+
+    </div>
+
+    <!-- اللوجين -->
+
+    <div class="right">
+
+        <div class="login-box">
+
+            <h2>LOGIN 🔐</h2>
+
+            <input type="text"
+            id="username"
+            placeholder="Username">
+
+            <input type="password"
+            id="password"
+            placeholder="Password">
+
+            <button onclick="check()">
+                LOGIN
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+let attempts = 0;
+
+function check(){
+
+    let user =
+    document.getElementById("username").value;
+
+    let pass =
+    document.getElementById("password").value;
+
+    let box =
+    document.querySelector(".login-box");
+
+    let btn =
+    document.querySelector("button");
+
+    if(user === "saif2004" && pass === "246805"){
+
+        localStorage.setItem("login","true");
+
+        window.location.href="home.html";
+
+    }else{
+
+        attempts++;
+
+        /* اهتزاز */
+
+        box.classList.add("shake");
+
+        setTimeout(() => {
+            box.classList.remove("shake");
+        },500);
+
+        alert("Wrong Password ❌");
+
+        /* يقفل بعد 3 محاولات */
+
+        if(attempts >= 3){
+
+            btn.disabled = true;
+
+            btn.innerHTML = "LOCKED 🔒";
+
+            btn.style.background = "gray";
+
+            alert("Login Locked For 30 Seconds");
+
+            setTimeout(() => {
+
+                attempts = 0;
+
+                btn.disabled = false;
+
+                btn.innerHTML = "LOGIN";
+
+                btn.style.background = "#00ffcc";
+
+            },30000);
+        }
+    }
+}
+
+/* تشغيل اللوجين بزر Enter */
+
+document.addEventListener("keydown", function(event){
+
+    if(event.key === "Enter"){
+
+        check();
+    }
+
+});
+
+</script>
+
+</body>
+</html>
+```
